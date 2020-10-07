@@ -12,11 +12,9 @@ def checksum(pesel):
   else:
     print("Validating...")
     multiplers = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3]
-    array = list(pesel)
+    array = list(map(int, pesel))
     global checksumInt
     sum_control = 0
-    for i in range(0, len(array)):
-      array[i] = int(array[i])
     for i in range(len(array) - 1):
       checksumInt += multiplers[i] * array[i]
 
@@ -44,11 +42,11 @@ def showPeselInfo(pesel):
 def getMonth(pesel):
   month = 10 * int(pesel[2])
   month += int(pesel[3])
-  if month > 80 and month << 93:
+  if month > 80 and month < 93:
     month -= 80
-  elif month > 20 and month << 33:
+  elif month > 20 and month < 33:
     month -= 20
-  elif month > 40 and month << 53:
+  elif month > 40 and month < 53:
     month -= 40
   elif month > 60 and month < 73:
     month -= 60
